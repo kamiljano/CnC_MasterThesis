@@ -4,6 +4,15 @@ The following repository contains Kamil Janowski's master degree thesis, focusin
 of Command & Control (CnC) servers on various platforms. The goal of the comparison is to find the most efficient
 and cost effective method to remotely control the malware.
 
+To simplify the project, increase the development speed and ensure portability of common modules,
+both server side as well as the client side code of the Prove of Concept will be written
+with the help of Node.js. In real life applications however at least the client side
+should be written in a lower level language, to lower the risk of detection by the antivirus software.
+
+# Use cases
+
+// TODO: compare the most common trends for malware behaviour. Crypto mining? Surveillance? Password theft?
+
 # Approaches that will be reviewed in the study
 
 //TODO: modularize README. The main page should only contain a small description of what is going on
