@@ -41,7 +41,7 @@ spawn/kill additional server instances should that be needed
 instantly pulled by the administrator trying to see the full list of all clients and by the server instances themselves,
 to make sure that each ID that they assign to the client are unique 
 
-// TODO: Add the architecture schema
+![Standalone standalone architecture](architecture/standaloneArchitectureScaled.png "Standalone scalable architecture")
 
 // TODO: add sequence diagram
 
