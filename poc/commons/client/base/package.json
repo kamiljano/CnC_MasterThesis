@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "drivelist": "^6.2.2"
+    "drivelist": "^6.2.2",
+    "lodash": "^4.17.10"
   }
 }

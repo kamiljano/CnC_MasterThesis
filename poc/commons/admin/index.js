@@ -1,14 +1,17 @@
 'use strict';
 
 const readline = require('readline');
-const clientProcessor = require('./bin/cmd/clientProcessor');
+const helpProcessor = require('./bin/cmd/helpProcessor');
 
 const COMMAND_FEED = '> ';
 
 const processors = {
-  client: (command, processor) => clientProcessor(command, processor.client.clientManager),
-  help: require('./bin/cmd/helpProcessor'),
-  exit: () => process.exit(0)
+  help: {
+    process: () => helpProcessor.process(processors),
+    description: helpProcessor.description
+  },
+  client: require('./bin/cmd/clientProcessor'),
+  exit: require('./bin/cmd/exitProcessor')
 };
 
 module.exports.AdminCommandLineProcessor = class {
@@ -31,7 +34,7 @@ module.exports.AdminCommandLineProcessor = class {
       const parsedLine = line.match(/([a-z]+)[ ]*(.*)/);
       if (parsedLine && processors[parsedLine[1]]) {
         try {
-          await processors[parsedLine[1]](parsedLine[2], this);
+          await processors[parsedLine[1]].process(parsedLine[2], this.client);
         } catch (err) {
           console.log(err);
         }
