@@ -1,7 +1,7 @@
 'use strict';
 
 const AdminClient = require('./bin/service/cloudDoorAdmin').AdminClient;
-const CommandLineProcessor = require('./bin/cmd/commandLineProcessor').CommandLineProcessor;
+const CommandLineProcessor = require('admin-commons').AdminCommandLineProcessor;
 
 const PubSub = require('@google-cloud/pubsub');
 

@@ -1,17 +1,17 @@
 'use strict';
 
 const readline = require('readline');
-const clientProcessor = require('./clientProcessor');
+const clientProcessor = require('./bin/cmd/clientProcessor');
 
 const COMMAND_FEED = '> ';
 
 const processors = {
   client: (command, processor) => clientProcessor(command, processor.client.clientManager),
-  help: require('./helpProcessor'),
+  help: require('./bin/cmd/helpProcessor'),
   exit: () => process.exit(0)
 };
 
-module.exports.CommandLineProcessor = class {
+module.exports.AdminCommandLineProcessor = class {
 
   constructor(client) {
     this.client = client;
@@ -42,5 +42,4 @@ module.exports.CommandLineProcessor = class {
       process.stdout.write(COMMAND_FEED);
     });
   }
-
 };

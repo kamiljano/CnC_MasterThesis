@@ -1,5 +1,5 @@
 {
-  "name": "clouddooradmin",
+  "name": "admin-commons",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/datastore": "^1.4.0",
-    "@google-cloud/pubsub": "^0.18.0",
-    "admin-commons": "file:../../commons/admin"
+    "cli-table": "^0.3.1"
   }
 }
