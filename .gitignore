@@ -5,3 +5,6 @@
 
 # Node.js dependencies
 node_modules
+
+# MS Office temporary files
+~*.docx
