@@ -1,0 +1,19 @@
+{
+  "name": "clouddoorregistrationfunction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "emulatorStart": "functions start",
+    "emulatorDeploy": "functions deploy CloudDoorRegistrationFunction --trigger-http --entry-point handle",
+    "emulatorDebug": "functions inspect CloudDoorRegistrationFunction",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.4.0",
+    "@google-cloud/pubsub": "^0.18.0",
+    "uuidv4": "^1.0.0"
+  }
+}
