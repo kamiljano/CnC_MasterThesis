@@ -11,7 +11,17 @@ should be written in a lower level language, to lower the risk of detection by t
 
 # Use cases
 
-// TODO: compare the most common trends for malware behaviour. Crypto mining? Surveillance? Password theft?
+According to Norton the following are the most common botnet use cases:
+* Executing a DDoS attacks
+* Emailing spam to millions of internet users
+* Generating fake Internet traffic on a third-party website for financial gain.
+* Replacing banner ads in your web browser specifically targeted at you.
+* Pop-ups ads designed to get you to pay for the removal of the botnet through a phony anti-spyware package.
+
+Additionally very recently it became more and more visible that the botnet trends slowly shift
+toward the crypto currency mining. In particular Monero tends to be a very common choice, as 
+the currency is managed in such a way, that it's very difficult to track back how the coins 
+were acquired, granting the attacker a layer of security.
 
 # Approaches that will be reviewed in the study
 
