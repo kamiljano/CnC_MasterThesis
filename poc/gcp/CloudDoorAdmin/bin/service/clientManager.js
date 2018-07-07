@@ -2,9 +2,11 @@
 
 const Datastore = require('@google-cloud/datastore');
 const PubSub = require('@google-cloud/pubsub');
+const Storage = require('@google-cloud/storage');
 
 const datastore = new Datastore();
 const pubsub = new PubSub();
+const storage = new Storage();
 
 class CloudDoorClient {
   constructor(id, data) {
@@ -26,5 +28,10 @@ module.exports.ClientManager = class {
       .topic(`projects/clouddoor-dev/topics/client-${id}`)
       .publisher()
       .publish(Buffer.from(JSON.stringify({operation: 'browse', details: {path}})));
+  }
+
+  upload(id, path) {
+    //TODO: acquire a signed URL
+    //TODO: send a request to the client
   }
 };
