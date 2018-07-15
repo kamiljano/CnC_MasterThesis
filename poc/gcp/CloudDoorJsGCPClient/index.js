@@ -9,7 +9,9 @@ const config = {
 };
 
 const client = new CloudDoorClient({
-  registrationService: new RegistrationService(config.registrationUrl),
+  registration: {
+    registrationService: new RegistrationService(config.registrationUrl),
+  },
   pushNotificationService: new PushNotificationService()
 });
 
