@@ -24,6 +24,9 @@ module.exports.StandaloneClientManager = class {
   browse(clientId, path) {
     return request.get(`${this.server}/clients/${clientId}/files`, {
       json: true,
+      headers: {
+        'content-type': 'application/json'
+      },
       qs: {
         path
       }

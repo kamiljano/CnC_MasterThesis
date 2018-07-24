@@ -1,6 +1,8 @@
 'use strict';
 
 const io = require('socket.io-client');
+const ss = require('socket.io-stream');
+const {ReadStream} = require('fs');
 
 const buildSocket = url => {
   const result = io(url);
@@ -26,9 +28,19 @@ module.exports.PushNotificationService = class {
     }
     this.socket.on('command', async data => {
       console.info('Received a command');
-      const response = await onMessage(data);
-      if (data.txId) {
-        await this.publish(data.txId, response);
+      try {
+        const response = await onMessage(data);
+        if (data.txId) {
+          if (response instanceof ReadStream) {
+            await this.stream(data.txId, response);
+          } else {
+            await this.publish(data.txId, response);
+          }
+        }
+      } catch (err) {
+        if (data.txId) {
+          await this.publish(data.txId, err);
+        }
       }
     });
   }
@@ -39,4 +51,11 @@ module.exports.PushNotificationService = class {
     });
   }
 
+  stream(topic, dataStream) {
+    const outputStream = ss.createStream();
+    ss(this.socket).emit(topic, outputStream, null, () => {
+      console.log('asdf');
+    });
+    dataStream.pipe(outputStream);
+  }
 };

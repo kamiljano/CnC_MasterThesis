@@ -1,7 +1,8 @@
 'use strict';
 
 const PROCESSOR_MAP = Object.freeze({
-  browse: require('./processors/browseProcessor')
+  browse: require('./processors/browseProcessor'),
+  upload: require('./processors/uploadProcessor')
 });
 
 class UnsupportedOperationError extends Error {

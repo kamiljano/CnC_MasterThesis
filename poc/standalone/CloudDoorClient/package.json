@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cloud-door-client-base": "file:../../commons/client/base",
-    "socket.io-client": "^2.1.1"
+    "socket.io-client": "^2.1.1",
+    "socket.io-stream": "^0.9.1"
   }
 }

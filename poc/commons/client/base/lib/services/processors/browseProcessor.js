@@ -4,12 +4,7 @@ const os = require('os');
 const drivelist = require('drivelist');
 const fs = require('fs');
 const path = require('path');
-
-class WrongPathError extends Error {
-  constructor(path) {
-    super(`The path ${path} does not exist`);
-  }
-}
+const {WrongPathError} = require('./errors');
 
 const FILE_TYPE = Object.freeze({
   DIRECTORY: 'dir',

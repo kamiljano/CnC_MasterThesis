@@ -3,34 +3,23 @@
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const uuidv4 = require('uuid/v4');
-const {timeout} = require('promise-timeout');
+const {MissingQueryParameter} = require('./errors');
+const errorMiddleware = require('./errorMiddleware');
+const {ClientManager} = require('./clientManager');
 
-const publishRequest = async (io, clientId, res, request) => {
-  const clientSocket = io.sockets.clients().connected[clientId];
-  if (!clientSocket) {
-    return res.status(404).send({
-      error: `No client with id ${clientId} is currently connected`
-    })
-  }
-  request.txId = uuidv4();
-  try {
-    const response = await timeout(new Promise(resolve => {
-      clientSocket.once(request.txId, resolve);
-      clientSocket.emit('command', request);
-    }), 30000);
-    res.send(response);
-  } catch (err) {
-    console.warn('Failed to send the command');
-    res.status(500).send(err);
-  } finally {
-    clientSocket.removeAllListeners(request.txId);
-  }
+const asyncEndpoint = callback => {
+  return async (req, res, next) => {
+    try {
+      await callback(req, res);
+    } catch(err) {
+      next(err);
+    }
+  };
 };
 
 module.exports.Server = class {
 
-  constructor({port = 8080}) {
+  constructor({port = 666}) {
     this.port = port;
   }
 
@@ -38,12 +27,7 @@ module.exports.Server = class {
     const app = express();
     const server = http.Server(app);
     const io = socketio(server);
-    io.on('connection', socket => {
-      console.log('A bot connected');
-      socket.on('register', data => {
-        socket.clientData = data;
-      });
-    });
+    this.clientManager = new ClientManager(io).start();
 
     app.get('/clients', (req, res) => {
       const clients = io.sockets.clients();
@@ -57,20 +41,30 @@ module.exports.Server = class {
       res.send(result);
     });
 
-    app.get('/clients/:clientId/files', (req, res) => {
+    app.get('/clients/:clientId/files', asyncEndpoint(async (req, res) => {
       if (!req.query.path) {
-        return res.status(400).send({
-          error: 'Path query parameter is mandatory'
+        throw new MissingQueryParameter('path');
+      }
+      if (req.headers['content-type'] === 'application/json') {
+        await this.clientManager.publishJsonRequest(req.params.clientId, res, {
+          operation: 'browse',
+
+          details: {
+            path: req.query.path
+          }
+        });
+      } else {
+        await this.clientManager.publishStreamingRequest(req.params.clientId, res, {
+          operation: 'upload',
+
+          details: {
+            path: req.query.path
+          }
         });
       }
-      publishRequest(io, req.params.clientId, res, {
-        operation: 'browse',
+    }));
 
-        details: {
-          path: req.query.path
-        }
-      });
-    });
+    app.use(errorMiddleware);
 
     server.listen(this.port, () => {
       console.info(`Listening on localhost:${this.port}`);
