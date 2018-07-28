@@ -18,58 +18,32 @@ const listAllClients = async clientManager => {
   }
 };
 
-const browse = (clientManager, details) => {
-  return new Promise((resolve, reject) => {
-    clientManager.onClientResponse = message => {
-      message = JSON.parse(message);
-      console.log(JSON.stringify(message.result, null, '\t'));
-      if (message.success) {
-        resolve(message.result);
-      } else {
-        reject(message.result);
-      }
-    };
-    clientManager.browse(details.clientId, details.path);
-  });
-};
-
-const upload = (clientManager, details) => {
-  return new Promise((resolve, reject) => {
-    clientManager.onClientResponse = message => {
-      message = JSON.parse(message);
-      console.log(JSON.stringify(message.result, null, '\t'));
-      if (message.success) {
-        resolve(message.result);
-      } else {
-        reject(message.result);
-      }
-    };
-    clientManager.upload(details.clientId, details.path);
-  });
-};
-
 module.exports = {
-  process(clientCommand, client) {
+  async process(clientCommand, client) {
     const clientManager = client.clientManager;
-    const parsedCommand = clientCommand.match(/([a-z]+)[ ]*(.*)/);
+    const parsedCommand = clientCommand.match(/([a-z]+)[ ]*(.*)/i);
     let details;
-    switch (parsedCommand ? parsedCommand[1] : '') {
+    switch (parsedCommand ? parsedCommand[1].toLowerCase() : '') {
       case 'list':
-        return listAllClients(clientManager);
+        await listAllClients(clientManager);
+        break;
       case 'browse':
-        details = parsedCommand[2].match(/([a-z0-9\-]+) (.*)/);
+        details = parsedCommand[2].match(/([a-z0-9\-_]+) (.*)/i);
         if (!details || details.length !== 3) {
           console.error('Failed to parse the command. Provide it int the format "client browse <client ID> <path>"');
           return;
         }
-        return browse(clientManager, {clientId: details[0], path: details[1]});
+        const result = await clientManager.browse(details[1].trim(), details[2].trim());
+        console.log(JSON.stringify(result, null, '\t'));
+        break;
       case 'upload':
-        details = parsedCommand[2].match(/([a-z0-9\-]+) (.*)/);
+        details = parsedCommand[2].match(/([a-z0-9\-_]+) (.*)/i);
         if (!details || details.length !== 3) {
           console.error('Failed to parse the command. Provide it int the format "client browse <client ID> <path>"');
           return;
         }
-        return upload(clientManager, {clientId: details[0], path: details[1]});
+        await upload(clientManager, {clientId: details[0].trim(), path: details[1].trim()});
+        break;
       default:
         console.error('Invalid client command. The supported ones are: list, browse');
     }

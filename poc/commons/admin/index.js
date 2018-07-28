@@ -30,8 +30,8 @@ module.exports.AdminCommandLineProcessor = class {
     process.stdout.write(COMMAND_FEED);
 
     rl.on('line', async line => {
-      line = line.trim().toLowerCase();
-      const parsedLine = line.match(/([a-z]+)[ ]*(.*)/);
+      line = line.trim();
+      const parsedLine = line.match(/([a-z]+)[ ]*(.*)/i);
       if (parsedLine && processors[parsedLine[1]]) {
         try {
           await processors[parsedLine[1]].process(parsedLine[2], this.client);
