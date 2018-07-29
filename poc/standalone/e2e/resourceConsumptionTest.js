@@ -1,6 +1,6 @@
 'use strict';
 
-const Client = require('CloudDoorClient/client');
+const Client = require('clouddoorclient');
 const {startServer} = require('./lib/performance/serverProcess');
 const {ServerConnector} = require('./lib/connectors/serverConnector');
 

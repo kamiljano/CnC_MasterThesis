@@ -2,7 +2,9 @@
   "name": "standalone-e2e",
   "version": "1.0.0",
   "scripts": {
-    "windowsTest": "mocha windowsTest.js"
+    "linuxTest": "mocha tests/linux/linuxTest.js tests/general",
+    "windowsTest": "mocha tests/windows/windowsTest.js tests/general",
+    "resourceConsumption": "node resourceConsumptionTest.js"
   },
   "author": "",
   "license": "ISC",

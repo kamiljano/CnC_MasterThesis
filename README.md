@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kamiljano/CloudDoorThesis.svg?branch=master)](https://travis-ci.org/kamiljano/CloudDoorThesis)
+
 # About
 
 The following repository contains Kamil Janowski's master degree thesis, focusing on comparison of architecture

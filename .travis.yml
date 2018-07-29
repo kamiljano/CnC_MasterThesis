@@ -1,0 +1,22 @@
+language: node_js
+sudo: false
+node_js:
+  - "8"
+branches:
+  only:
+    - master
+    - travis
+install:
+  - cd poc/commons/client/base
+  - npm install
+  - cd ../../e2e
+  - npm install
+
+  - cd ../../standalone/CloudDoorClient
+  - npm install
+  - cd ../CloudDoorServer
+  - npm install
+  - cd ../e2e
+  - npm install
+script:
+  - npm run linuxTest

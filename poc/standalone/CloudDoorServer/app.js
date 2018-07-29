@@ -10,3 +10,5 @@ const options = commandLineArgs([
 new Server({
   port: options.port
 }).start();
+
+module.exports.Server = Server;

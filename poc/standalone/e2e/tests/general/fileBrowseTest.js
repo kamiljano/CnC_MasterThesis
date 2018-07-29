@@ -1,21 +1,21 @@
 'use strict';
 
-const {Server} = require('CloudDoorServer/lib/server');
-const Client = require('CloudDoorClient/client');
+const {Server} = require('clouddoorserver');
+const Client = require('clouddoorclient');
 const fs = require('fs');
 const chai = require('chai');
-const {ServerConnector} = require('./lib/connectors/serverConnector');
+const {ServerConnector} = require('../../lib/connectors/serverConnector');
 chai.should();
 
-describe('GIVEN a server and a client running on Windows', () => {
+describe('GIVEN a server and a client', () => {
 
-  const serverUrl = 'http://localhost:667';
+  const serverUrl = 'http://localhost:3000';
   let server;
   let client;
   let connector;
 
   before(async () => {
-    server = new Server({port: 667});
+    server = new Server({port: 3000});
     await server.start();
     client = new Client({urlBase: serverUrl});
     await client.start();
@@ -31,17 +31,7 @@ describe('GIVEN a server and a client running on Windows', () => {
     const clients = await connector.listClients({pollUntilNClientsAvailable: 1});
     clients.length.should.equal(1);
     clients[0].id.should.not.be.undefined;
-    clients[0].os.type.should.equal('windows');
     clients[0].os.version.should.not.be.undefined;
-  });
-
-  it('WHEN requesting from the server a list of files under "/", THEN a list of drives is returned', async () => {
-    const clients = await connector.listClients({pollUntilNClientsAvailable: 1});
-    const drives = await connector.listFiles(clients[0].id, '/');
-    drives.should.deep.contain({
-      path: 'C:',
-      type: 'dir'
-    });
   });
 
   it('WHEN requesting from the server a list of files under a subdirectory, THEN a list of files under that directory is returned', async () => {
