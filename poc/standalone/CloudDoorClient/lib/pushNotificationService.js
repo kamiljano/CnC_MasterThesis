@@ -58,4 +58,8 @@ module.exports.PushNotificationService = class {
     });
     dataStream.pipe(outputStream);
   }
+
+  stop() {
+    this.socket.disconnect();
+  }
 };

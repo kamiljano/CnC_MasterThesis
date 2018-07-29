@@ -29,6 +29,10 @@ class CloudDoorClient {
       console.log('The client has been successfully subscribed to the Pub/Sub topic');
     });
   }
+
+  stop() {
+    this.pushNotificationService.stop();
+  }
 }
 
 module.exports.CloudDoorClient = CloudDoorClient;

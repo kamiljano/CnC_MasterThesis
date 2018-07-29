@@ -24,50 +24,63 @@ module.exports.Server = class {
   }
 
   start() {
-    const app = express();
-    const server = http.Server(app);
-    const io = socketio(server);
-    this.clientManager = new ClientManager(io).start();
+    return new Promise(resolve => {
+      const app = express();
+      const server = http.Server(app);
+      const io = socketio(server);
+      this.clientManager = new ClientManager(io).start();
 
-    app.get('/clients', (req, res) => {
-      const clients = io.sockets.clients();
-      const result = [];
-      for (const connectedId in clients.connected) {
-        result.push({
-          id: connectedId,
-          os: clients.connected[connectedId].clientData.os
-        });
-      }
-      res.send(result);
-    });
+      app.get('/health', (req, res) => {
+        res.status(200).send({server: true});
+      });
 
-    app.get('/clients/:clientId/files', asyncEndpoint(async (req, res) => {
-      if (!req.query.path) {
-        throw new MissingQueryParameter('path');
-      }
-      if (req.headers['content-type'] === 'application/json') {
-        await this.clientManager.publishJsonRequest(req.params.clientId, res, {
-          operation: 'browse',
-
-          details: {
-            path: req.query.path
+      app.get('/clients', (req, res) => {
+        const clients = io.sockets.clients();
+        const result = [];
+        for (const connectedId in clients.connected) {
+          if (clients.connected[connectedId].clientData) {
+            result.push({
+              id: connectedId,
+              os: clients.connected[connectedId].clientData.os
+            });
           }
-        });
-      } else {
-        await this.clientManager.publishStreamingRequest(req.params.clientId, res, {
-          operation: 'upload',
+        }
+        res.send(result);
+      });
 
-          details: {
-            path: req.query.path
-          }
-        });
-      }
-    }));
+      app.get('/clients/:clientId/files', asyncEndpoint(async (req, res) => {
+        if (!req.query.path) {
+          throw new MissingQueryParameter('path');
+        }
+        if (req.headers['content-type'] === 'application/json') {
+          await this.clientManager.publishJsonRequest(req.params.clientId, res, {
+            operation: 'browse',
 
-    app.use(errorMiddleware);
+            details: {
+              path: req.query.path
+            }
+          });
+        } else {
+          await this.clientManager.publishStreamingRequest(req.params.clientId, res, {
+            operation: 'upload',
 
-    server.listen(this.port, () => {
-      console.info(`Listening on localhost:${this.port}`);
+            details: {
+              path: req.query.path
+            }
+          });
+        }
+      }));
+
+      app.use(errorMiddleware);
+
+      this._server = server.listen(this.port, () => {
+        console.info(`Listening on localhost:${this.port}`);
+        resolve();
+      });
     });
+  }
+
+  stop() {
+    this._server.close();
   }
 };
