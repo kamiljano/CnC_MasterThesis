@@ -12,6 +12,7 @@
     "clouddoorserver": "file:../CloudDoorServer",
     "e2e": "file:../../commons/e2e",
     "mocha": "^5.2.0",
+    "pidusage": "^2.0.15",
     "request": "^2.87.0",
     "request-promise-native": "^1.0.5"
   }
