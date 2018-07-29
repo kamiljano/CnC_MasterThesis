@@ -23,7 +23,7 @@ describe('GIVEN a server and a client running on Windows', () => {
   });
 
   after(() => {
-    server.stop()
+    server.stop();
     client.stop();
   });
 
