@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/kamiljano/CloudDoorThesis.svg?branch=master)](https://travis-ci.org/kamiljano/CloudDoorThesis)
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorServer/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorClient/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+
 # About
 
 The module contains standalone CnC, the client that can connect to it and an admin application

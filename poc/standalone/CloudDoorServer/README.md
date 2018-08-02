@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/kamiljano/CloudDoorThesis.svg?branch=master)](https://travis-ci.org/kamiljano/CloudDoorThesis)
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorServer/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+
 # About
 
 The module contains a standalone CnC server capable of running any environment supporting Node.js.
