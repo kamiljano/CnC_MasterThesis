@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/gcp/CloudDoorRegistrationFunction/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+
 # About
 The cloud function responsible for generating all the necessary cloud resources for a new client
 and storing the client information.

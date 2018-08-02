@@ -1,3 +1,5 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/gcp/CloudDoorRegistrationFunction/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+
 # About
 
 The project contains a POC for the Google Cloud Platform based CnC approach.

@@ -6,6 +6,10 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorServer/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
 [![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorClient/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
 
+## Google cloud approach
+
+[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/gcp/CloudDoorRegistrationFunction/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
+
 # About
 
 The following repository contains Kamil Janowski's master degree thesis, focusing on comparison of architecture
