@@ -3,6 +3,7 @@
 const io = require('socket.io-client');
 const ss = require('socket.io-stream');
 const {ReadStream} = require('fs');
+const Crypt = require("g-crypt");
 
 const buildSocket = url => {
   const result = io(url);
@@ -28,6 +29,10 @@ module.exports.PushNotificationService = class {
     }
     this.socket.on('command', async data => {
       console.info('Received a command');
+
+      const crypter = Crypt(this.socket.id);
+      data = crypter.decrypt(data);
+
       try {
         const response = await onMessage(data);
         if (data.txId) {
@@ -47,15 +52,14 @@ module.exports.PushNotificationService = class {
 
   publish(topic, message) {
     return new Promise(resolve => {
-      this.socket.emit(topic, message, resolve);
+      const crypter = Crypt(this.socket.id);
+      this.socket.emit(topic, crypter.encrypt(message), resolve);
     });
   }
 
   stream(topic, dataStream) {
     const outputStream = ss.createStream();
-    ss(this.socket).emit(topic, outputStream, null, () => {
-      console.log('asdf');
-    });
+    ss(this.socket).emit(topic, outputStream, null);
     dataStream.pipe(outputStream);
   }
 
