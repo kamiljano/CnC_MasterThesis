@@ -6,6 +6,7 @@ const socketio = require('socket.io');
 const {MissingQueryParameter} = require('./errors');
 const errorMiddleware = require('./errorMiddleware');
 const {ClientManager} = require('./clientManager');
+const redis = require('socket.io-redis');
 
 const asyncEndpoint = callback => {
   return async (req, res, next) => {
@@ -19,8 +20,17 @@ const asyncEndpoint = callback => {
 
 module.exports.Server = class {
 
-  constructor({port = 666}) {
+  /**
+   *
+   * @param port number
+   * @param redis {
+   *   host: string
+   *   port: number
+   * }
+   */
+  constructor({port = 666, redis}) {
     this.port = port;
+    this.redis = redis;
   }
 
   start() {
@@ -28,6 +38,11 @@ module.exports.Server = class {
       const app = express();
       const server = http.Server(app);
       const io = socketio(server);
+
+      if (this.redis) {
+        io.adapter(redis(this.redis));
+      }
+
       this.clientManager = new ClientManager(io).start();
 
       app.get('/health', (req, res) => {

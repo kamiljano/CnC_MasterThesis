@@ -14,6 +14,7 @@ In order to run, execute the following command
 ```
 
 Once the server starts, you can find it under `http://localhost:666`.
+Alternatively you can use the `--port XXXX` parameter to run the server on a port different than 666.
 Note that the self signed SSL certificate is generated only for localhost. If you decide to deploy
 the application to a remote server, you'll have to generate a new certificate.
 
@@ -66,7 +67,7 @@ connected clients.
 To enable such mode, run 
 
 ```
-    node app.js --redis=redis://<redis url>
+    node app.js --redis.host=localhost --redis.port=6379
 ```
 
 ![Standalone standalone architecture](../../../architecture/standaloneArchitectureScaled.png "Standalone scalable architecture")
