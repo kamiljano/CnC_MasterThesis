@@ -18,3 +18,9 @@ you can execute the following command
 ```commandline
 npm run resourceConsumption
 ```
+
+Alternatively if you want the server to use redis, you can use the following command
+
+```commandline
+npm run resourceConsumption --redis.host=<redis_host> --redis.port=<redis_port>
+```

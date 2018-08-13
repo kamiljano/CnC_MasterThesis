@@ -29,11 +29,15 @@ class ServerProcess {
   }
 }
 
-const startServer = async port => {
+const startServer = async (port, redis) => {
   const urlBase = 'http://localhost:' + port;
   let serverProcess;
   try {
-    serverProcess = spawn('node', [path.join(path.dirname(require.main.filename), '../CloudDoorServer/app.js'), '--port', port]);
+    if (redis) {
+      serverProcess = spawn('node', [path.join(path.dirname(require.main.filename), '../CloudDoorServer/app.js'), '--port', port, '--redis.host', redis.host, '--redis.port', redis.port]);
+    } else {
+      serverProcess = spawn('node', [path.join(path.dirname(require.main.filename), '../CloudDoorServer/app.js'), '--port', port]);
+    }
     serverProcess.on('exit', code => {
       if (code === 0) {
         console.log('Server closed successfully');

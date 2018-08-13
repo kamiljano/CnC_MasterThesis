@@ -3,6 +3,17 @@
 const Client = require('clouddoorclient');
 const {startServer} = require('./lib/performance/serverProcess');
 const {ServerConnector} = require('./lib/connectors/serverConnector');
+const commandLineArgs = require('command-line-args');
+const path = require('path');
+const fs = require('fs');
+
+const options = commandLineArgs([
+  {name: 'redis.host', type: String},
+  {name: 'redis.port', type: Number},
+  {name: 'output', alias: 'o', type: String},
+  {name: 'clients', type: Number, defaultOption: 10},
+  {name: 'override', type: Boolean, defaultOption: false}
+]);
 
 const port = 668;
 const urlBase = `http://localhost:${port}`;
@@ -24,15 +35,51 @@ const startClient = async expectedSize => {
   return result;
 };
 
+const getRedisOptions = () => {
+  return options['redis.host'] && options['redis.port']
+    ? {
+      host: options['redis.host'],
+      port: options['redis.port']
+    }
+    : undefined;
+};
+
+const logResourceUsage = (clientNo, resources) => {
+  console.log(`Clienst: ${clientNo}: ${JSON.stringify(resources)}`);
+  if (options.output) {
+    const arr = [];
+    for(const key in resources) {
+      arr.push(resources[key]);
+    }
+    fs.appendFileSync(options.output, `${clientNo},${arr.join(',')}\r\n`);
+  }
+};
+
+const validateOutputPath = () => {
+  if (!options.output) {
+    return;
+  }
+  if (fs.existsSync(options.output) && !options.override) {
+    throw new Error(`The file ${options.output} already exists`);
+  }
+  if (!fs.existsSync(path.dirname(options.output))) {
+    throw new Error(`The directory ${path.dirname(options.output)} does not exist`);
+  }
+};
+
 (async () => {
+
+  validateOutputPath();
+
   let serverProcess;
   const clients = [];
   try {
-    serverProcess = await startServer(port);
-    console.log(`No client usage: ${JSON.stringify(await serverProcess.resources())}`);
-    for (let i = 0; i < 10; i++) {
+    serverProcess = await startServer(port, getRedisOptions());
+    logResourceUsage(0, await serverProcess.resources());
+    const totalCleints = options.clients || 10;
+    for (let i = 0; i < totalCleints; i++) {
       clients.push(await startClient(i + 1));
-      console.log(`${i + 1}: ${JSON.stringify(await serverProcess.resources())}`);
+      logResourceUsage(i + 1, await serverProcess.resources());
     }
   } finally {
     clients.forEach(client => client.stop());
