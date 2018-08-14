@@ -37,16 +37,11 @@ were acquired, granting the attacker a layer of security.
 
 # Approaches that will be reviewed in the study
 
-//TODO: modularize README. The main page should only contain a small description of what is going on
-and the details of each approach should be described only in POC modules.
-
 ## Standalone CnC
 
 The most basic solution suggested by various blogs is a single standalone CnC server.
 
 ![Standalone architecture](architecture/standaloneArchitecture.png "Standalone architecture")
-
-//TODO: add sequence diagram 
 
 ## Scalable standalone CnC
 
@@ -65,7 +60,10 @@ to make sure that each ID that they assign to the client are unique
 
 ![Standalone standalone architecture](architecture/standaloneArchitectureScaled.png "Standalone scalable architecture")
 
-// TODO: add sequence diagram
+## Standalone POC
+
+A Proof of Concept has been implemented for the standalone approach and can be found
+[here](https://github.com/kamiljano/CloudDoorThesis/tree/master/poc/standalone).
 
 ## Google Cloud Platform serverless CnC
 

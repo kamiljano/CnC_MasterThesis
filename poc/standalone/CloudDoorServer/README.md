@@ -5,6 +5,8 @@
 
 The module contains a standalone CnC server capable of running any environment supporting Node.js.
 
+This is the basic approach that is often described on all sorts of different blogs.
+
 # Single server execution
 
 In order to run, execute the following command

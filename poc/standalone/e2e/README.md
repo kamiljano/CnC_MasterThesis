@@ -24,3 +24,7 @@ Alternatively if you want the server to use redis, you can use the following com
 ```commandline
 npm run resourceConsumption --redis.host=<redis_host> --redis.port=<redis_port>
 ```
+
+The testing is done as follows: 
+
+![Standalone architecture](../../../architecture/standaloneTestSequence.png "Resource testing sequence diagram")
