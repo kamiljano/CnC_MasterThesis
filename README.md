@@ -67,9 +67,11 @@ A Proof of Concept has been implemented for the standalone approach and can be f
 
 ## Google Cloud Platform serverless CnC
 
-// TODO: Describe approach with Pub-Sub
+After exploring the possible implementations on the Google Cloud Platform, I have concluded,
+that a legitimate serverless implementation is not feasible using that platform. This is due 
+to the lack of an appropriate push notification service.
 
-// TODO: Describe approach with IoT
+For more information on the topic refer to the [POC README file](https://github.com/kamiljano/CloudDoorThesis/blob/master/poc/gcp/README.md)
 
 ## AWS serverless CnC
 
