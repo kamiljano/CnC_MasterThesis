@@ -4,7 +4,7 @@ const Server = require('./lib/server').Server;
 const commandLineArgs = require('command-line-args');
 
 const options = commandLineArgs([
-  {name: 'port', alias: 'p', type: Number, defaultOption: 666},
+  {name: 'port', alias: 'p', type: Number, defaultValue: process.env.PORT},
   {name: 'redis.host', type: String},
   {name: 'redis.port', type: Number},
 ]);

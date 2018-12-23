@@ -1,0 +1,28 @@
+service: clouddoor
+
+package:
+  include:
+    - package.json
+    - package-lock.json
+    - createClient.js
+    - lib/**
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${opt:region, 'eu-west-1'}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "iot:*"
+      Resource: "*"
+
+functions:
+  createClient:
+    handler: functions/createClient/createClient.handle
+    memorySize: 256
+    timeout: 10
+    events:
+      - http:
+          path: /device
+          method: post
