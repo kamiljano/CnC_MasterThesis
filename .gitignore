@@ -8,4 +8,5 @@ node_modules
 
 # MS Office temporary files
 ~*.docx
+~*.xlsx
 *.tmp
