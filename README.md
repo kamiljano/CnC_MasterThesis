@@ -1,15 +1,3 @@
-# Build
-
-## Standalone approach
-
-[![Build Status](https://travis-ci.org/kamiljano/CloudDoorThesis.svg?branch=master)](https://travis-ci.org/kamiljano/CloudDoorThesis)
-[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorServer/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
-[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/standalone/CloudDoorClient/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
-
-## Google cloud approach
-
-[![Known Vulnerabilities](https://snyk.io/test/github/kamiljano/CloudDoorThesis/badge.svg?targetFile=/poc/gcp/CloudDoorRegistrationFunction/package.json)](https://snyk.io/test/github/kamiljano/CloudDoorThesis)
-
 # About
 
 The following repository contains Kamil Janowski's master degree thesis, focusing on comparison of architecture
@@ -43,7 +31,7 @@ The most basic solution suggested by various blogs is a single standalone CnC se
 
 ![Standalone architecture](architecture/standaloneArchitecture.png "Standalone architecture")
 
-## Scalable standalone CnC
+### Scalable standalone CnC
 
 The previous solution has serious limitations in terms of performance. With larger number of clients, a single
 Virtual Machine running the server might not have enough resources to run the system efficiently
@@ -60,7 +48,7 @@ to make sure that each ID that they assign to the client are unique
 
 ![Standalone standalone architecture](architecture/standaloneArchitectureScaled.png "Standalone scalable architecture")
 
-## Standalone POC
+### Standalone POC
 
 A Proof of Concept has been implemented for the standalone approach and can be found
 [here](https://github.com/kamiljano/CloudDoorThesis/tree/master/poc/standalone).
@@ -75,6 +63,22 @@ For more information on the topic refer to the [POC README file](https://github.
 
 ## AWS serverless CnC
 
-// TODO: Explore the possibilities
+There's a number of different ways a serverless CnC application can be implemented using the AWS services.
+We could consider deliverying the command to the client through any of the following services:
+
+* SNS - normally meant for deliverying the push notifications only to AWS-hosted services, but can be worked around
+* AppSync - a very recently released service meant for building all sorts of social media and chats.
+* IoT - designed from scratch to handle the communication with applications/devices hosted outside of the cloud.
+
+Here's an example approach using the AWS IoT:
+
+![AWS IoT architecture](architecture/awsArchitecture.png "AWS IoT architecture")
+
+### AWS-based POC using IoT service
+
+A Proof of Concept has been implemented for the AWS-based approach and can be found
+[here](https://github.com/kamiljano/CloudDoorThesis/tree/master/poc/aws).
+
+
 
 ## Heroku? Azure?

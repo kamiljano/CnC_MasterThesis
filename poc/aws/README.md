@@ -4,6 +4,8 @@ The project contains a POC of the AWS CloudDoor client.
 
 The POC uses the AWS IoT service to deliver the commands to the client.
 
+![AWS IoT architecture](../../architecture/awsArchitecture.png "AWS IoT architecture")
+
 # Performance 
 
 You can measure the performance of the solution by entering the e2e directory and running
