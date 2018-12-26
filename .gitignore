@@ -5,6 +5,7 @@
 
 # Node.js dependencies
 node_modules
+.serverless
 
 # MS Office temporary files
 ~*.docx

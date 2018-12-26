@@ -17,7 +17,7 @@ describe('GIVEN the AWS-based CloudDoor client', () => {
 
   before(() => {
     iotdata = new AWS.IotData({region: 'eu-west-1', endpoint: IOT_ENDPOINT});
-    const rootDir = __dirname;
+    const rootDir = path.resolve(__dirname, '..');
     client = new Client(IOT_ENDPOINT, HTTP_ENDPOINT, {
       clientId: '07ba071c-e923-4580-9c22-81cfa84339c5',
       privateKeyPath: path.resolve(rootDir, 'client1Cert', 'private.pem.key'),
