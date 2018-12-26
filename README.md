@@ -1,6 +1,7 @@
 # About
 
-The following repository contains Kamil Janowski's master degree thesis, focusing on comparison of architecture
+The following repository contains [Kamil Janowski's master degree thesis](https://github.com/kamiljano/CloudDoorThesis/raw/master/Kamil%20Janowski%20-%20master's%20thesis.docx),
+focusing on comparison of architecture
 of Command & Control (CnC) servers on various platforms. The goal of the comparison is to find the most efficient
 and cost effective method to remotely control the malware.
 
