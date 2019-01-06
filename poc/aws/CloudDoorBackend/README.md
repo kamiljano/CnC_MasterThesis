@@ -1,9 +1,18 @@
-# Command Delivery
+# AWS IoT-based CnC
 
-There are multiple push notification-like services in AWS:
+## Design
 
-* SNS - Simple Notification Service - this one however is only meant for service-to-service communication
-* IoT Core - until recently the only service that could allow the developer to create a serverless chat on AWS.
-* AppSync - a service advertised specifically for the use in chat applications. In that sense it might be useful for our
-use case - based on https://github.com/chief-wizard/serverless-appsync-chat-app. - not necessarily suitable
-as it forces us to permanently store every command. Also it requires user authentication with user pool.
+![AWS IoT architecture](../../../architecture/awsArchitecture.png "AWS IoT architecture")
+
+The client registers within the HTTP-enabled lambda. The lambda, once triggered,
+registers a new Thing, an IAM Policy, and a Certificate. 
+Once the client is registered, it subscribes to its topic within the AWS IoT service and 
+simply waits until the attacker issues a remote command to be executed.
+
+## Deployment
+
+The application is written with the Serverless Framework.
+
+1. Verify that you have valid credentials in ~/.aws/credentials
+
+2. Run the command `serverless deploy`
