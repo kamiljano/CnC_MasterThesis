@@ -1,0 +1,18 @@
+{
+  "name": "azuree2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "command-line-args": "^5.0.2",
+    "e2e": "file:../../commons/e2e",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "simulated-device": "file:../client"
+  }
+}

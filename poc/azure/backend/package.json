@@ -1,0 +1,13 @@
+{
+  "name": "azureCommandIssuer",
+  "version": "1.0.0",
+  "description": "Azure Functions sample for the Serverless framework",
+  "main": "handler.js",
+  "devDependencies": {
+    "serverless": "^1.37.1",
+    "serverless-azure-functions": "*"
+  },
+  "dependencies": {
+    "azure-iothub": "^1.9.3"
+  }
+}
