@@ -31,4 +31,4 @@ The logic can be easily implemented in Azure Functions, which as essentially the
   
 # Final Architecture
 
-![Azure IoT architecture](../../../architecture/azureArchitecture.png "Azure IoT architecture")
+![Azure IoT architecture](../../architecture/azureArchitecture.png "Azure IoT architecture")
