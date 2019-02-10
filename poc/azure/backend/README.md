@@ -23,8 +23,12 @@ The logic can be easily implemented in Azure Functions, which as essentially the
   * Microsoft account
   * Google
   
-* IoT 
+* IoT Hub
   * Super simple authentication
   * Possibility to register devices from Function
   * Remote method invocation
   * note very reliable - needed to implement the retry functionality, as some of my requests were simply lost somewhere
+  
+# Final Architecture
+
+![Azure IoT architecture](../../../architecture/azureArchitecture.png "Azure IoT architecture")

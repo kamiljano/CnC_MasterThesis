@@ -80,6 +80,24 @@ Here's an example approach using the AWS IoT:
 A Proof of Concept has been implemented for the AWS-based approach and can be found
 [here](https://github.com/kamiljano/CloudDoorThesis/tree/master/poc/aws).
 
+## Azure serverless CnC
 
+Azure, just like any other cloud platform, provides the possibility of introducing serverless
+backend logic. They call it Azure Functions and they are not that much different from 
+the AWS Lambdas and Google Cloud Functions, with the exception that the trigger has to be 
+specified in the very beginning in a separate file located in the root directory of the function.
 
-## Heroku? Azure?
+Azure provides several different services that can be used to deliver a command to the bot:
+
+* SignalR - a websocket-based service. Originally designed for Chat applications.
+
+* IoT Hub - another IoT service. It allows not only the message delivery and management of the telemetry
+data, but also remote function invocation, what makes it sound like it was specifically designed
+for botnet management.
+
+![Azure IoT architecture](architecture/azureArchitecture.png "Azure IoT architecture")
+
+### Azure-based poc using IoT Hub
+
+A proof of Concept has been implemented for the Azure-based approach with the IoT Hub and can be found 
+[here](https://github.com/kamiljano/CloudDoorThesis/tree/master/poc/azure).
