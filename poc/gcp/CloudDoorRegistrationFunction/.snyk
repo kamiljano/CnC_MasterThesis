@@ -1,0 +1,30 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-AXIOS-174505:
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > google-auth-library > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/pubsub > google-auto-auth > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > google-gax > google-auto-auth > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > google-gax > google-auto-auth > google-auth-library > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > google-gax > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > @google-cloud/common > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2019-05-06T02:58:08.266Z'
+    - '@google-cloud/datastore > @google-cloud/common > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2019-05-06T02:58:08.266Z'
