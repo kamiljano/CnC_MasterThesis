@@ -1,0 +1,20 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - '@google-cloud/pubsub > google-gax > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/pubsub > google-auto-auth > async > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/datastore > split-array-stream > async > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/pubsub > google-gax > grpc > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > async > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/pubsub > @google-cloud/common > split-array-stream > async > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > async > lodash':
+        patched: '2020-05-01T02:55:04.742Z'
