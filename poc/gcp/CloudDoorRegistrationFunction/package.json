@@ -12,8 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/datastore": "^1.4.0",
-    "@google-cloud/pubsub": "^0.18.0",
+    "@google-cloud/datastore": "^1.4.1",
+    "@google-cloud/pubsub": "^0.20.0",
     "uuidv4": "^1.0.0"
   }
 }
