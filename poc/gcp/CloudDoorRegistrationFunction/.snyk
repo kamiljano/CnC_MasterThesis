@@ -1,0 +1,85 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-AXIOS-174505:
+    - '@google-cloud/pubsub > google-auto-auth > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > google-auth-library > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > google-auth-library > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > google-auth-library > gcp-metadata > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > google-auth-library > gtoken > axios':
+        patched: '2022-10-08T15:04:25.313Z'
+  'npm:extend:20180424':
+    - '@google-cloud/pubsub > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > request > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > request > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > google-auth-library > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > request > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > retry-request > request > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > request > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > google-auth-library > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > google-auth-library > gcp-metadata > extend':
+        patched: '2022-10-08T15:04:25.313Z'
+  SNYK-JS-LODASH-567746:
+    - '@google-cloud/pubsub > google-gax > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-auto-auth > async > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/datastore > split-array-stream > async > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > grpc > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > async > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > split-array-stream > async > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > async > lodash':
+        patched: '2022-10-08T15:04:25.313Z'
+  'npm:stringstream:20180511':
+    - '@google-cloud/pubsub > google-auto-auth > request > stringstream':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > request > stringstream':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > google-auto-auth > request > stringstream':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > @google-cloud/common > retry-request > request > stringstream':
+        patched: '2022-10-08T15:04:25.313Z'
+    - '@google-cloud/pubsub > google-gax > google-auto-auth > request > stringstream':
+        patched: '2022-10-08T15:04:25.313Z'
