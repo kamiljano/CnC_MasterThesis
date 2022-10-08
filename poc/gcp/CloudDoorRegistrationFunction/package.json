@@ -7,13 +7,17 @@
     "emulatorStart": "functions start",
     "emulatorDeploy": "functions deploy CloudDoorRegistrationFunction --trigger-http --entry-point handle",
     "emulatorDebug": "functions inspect CloudDoorRegistrationFunction",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google-cloud/datastore": "^1.4.0",
     "@google-cloud/pubsub": "^0.18.0",
-    "uuidv4": "^1.0.0"
-  }
+    "uuidv4": "^1.0.0",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
